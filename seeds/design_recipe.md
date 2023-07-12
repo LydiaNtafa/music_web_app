@@ -16,6 +16,13 @@ POST /albums
 GET /albums
 '''
 
+# Request:
+GET /artists
+
+# Expected response (200 OK)
+Pixies, ABBA, Taylor Swift, Nina Simone
+
+
 2. Create Examples as Tests
 Go through each route and write down one or more example responses.
 
@@ -57,6 +64,26 @@ Need more information !
  Expected response: 200 OK
  """
  Album(1,'After hours', 2020 , 1)
+
+ Scenario 3
+ --
+ GET/artists
+ Parameters: none
+ Expected Reponse: 200 ok
+ ""
+ Pixies, ABBA, Taylor Swift, Nina Simone
+
+ Scenario 4
+ --
+POST /artists
+Parameters:
+name=Wild nothing
+genre=Indie
+Expected response (200 OK)
+(No content)
+GET /artists
+Expected response (200 OK)
+Pixies, ABBA, Taylor Swift, Nina Simone, Wild nothing
 
 
 """ everything send via request is STR"""

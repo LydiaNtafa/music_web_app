@@ -14,4 +14,5 @@ class ArtistRepository:
 
     def add(self, artist):
         self.connection.execute("INSERT INTO artists(name, genre) VALUES (%s, %s)", [artist.name, artist.genre])
-        return ""
+        return None
+    
