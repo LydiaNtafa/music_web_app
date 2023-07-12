@@ -16,6 +16,7 @@ artist_id=2
 Nouns: 
 
 albums , title , release_year , artist_id
+artists, name, genre
 
 
 2. Infer the Table Name and Columns
@@ -23,7 +24,12 @@ Put the different nouns in this table. Replace the example with your own nouns.
 
 |   Record       | Properties
 |----------------|-----------------------------------|
-|   album	     |id, title, release year ,artist_id |
+|   album	       |id, title, release year ,artist_id |
+|----------------|-----------------------------------|
+
+|   Record       | Properties
+|----------------|-----------------------------------|
+|   artist       |id, name, genre                    |
 |----------------|-----------------------------------|
 
 
@@ -55,6 +61,12 @@ CREATE TABLE albums (
   title text,
   release_year int,
   artist_id int
+);
+
+CREATE TABLE artists (
+  id SERIAL PRIMARY KEY,
+  name text,
+  genre text
 );
 
 5. Create the table

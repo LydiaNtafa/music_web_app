@@ -3,6 +3,8 @@ from flask import Flask, request
 from lib.database_connection import get_flask_database_connection
 from lib.album_repository import *
 from lib.album import *
+from lib.artist_repository import ArtistRepository
+from lib.artist import Artist
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -28,11 +30,30 @@ def get_albums():
     connection = get_flask_database_connection(app)
     repository = Album_repository(connection)
     list_of_album = repository.all()
-    print(list_of_album)
     response = ""
     for album in list_of_album:
         response += f"{album}\n"
     return response
+
+@app.route('/artists')
+def get_artists():
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    list_of_artists = repository.all()
+    response = []
+    for artist in list_of_artists:
+        response.append(artist.name)
+    return (", ").join(response)
+
+@app.route('/artists', methods = ['POST'])
+def post_artist():
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    name = request.form['name']
+    genre = request.form['genre']
+    artist = Artist(None, name, genre)
+    repository.add(artist)
+    return ""
 
 
 
